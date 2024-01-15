@@ -11,14 +11,14 @@ export const initState = {
         status: "todo",
       },
     ],
-    pending: [
+    ongoing: [
       {
         title: "Prepare for Meeting",
         id: 3,
         description:
           "Gather necessary documents and information for the client meeting",
         dueDate: "2024-01-20",
-        status: "pending",
+        status: "ongoing",
       },
       {
         title: "Review Code Changes",
@@ -26,7 +26,7 @@ export const initState = {
         description:
           "Review and test the recent code changes in the development branch",
         dueDate: "2024-01-25",
-        status: "pending",
+        status: "ongoing",
       },
       {
         title: "Complete Training Modules",
@@ -34,7 +34,7 @@ export const initState = {
         description:
           "Finish the remaining training modules for professional development",
         dueDate: "2024-02-10",
-        status: "pending",
+        status: "ongoing",
       },
     ],
     completed: [
@@ -62,7 +62,7 @@ export const reducer = (state = initState, { type, payload }) => {
       };
     case ACTION_TYPES.UPDATE_TASK:
       return {
-        ...state
+        ...state,
       };
     default:
       return state;

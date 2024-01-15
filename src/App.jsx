@@ -18,7 +18,7 @@ function App() {
   };
 
   const handleFilters = ({ selectStatus, searchName }) => {
-    let newList = {...toDos};
+    let newList = { ...toDos };
     if (selectStatus && selectStatus !== "all") {
       newList = {};
       newList[selectStatus] = toDos[selectStatus];

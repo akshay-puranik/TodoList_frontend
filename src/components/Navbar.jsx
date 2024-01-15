@@ -12,7 +12,7 @@ export const Navbar = ({ handleFilters, toggleForm }) => {
     setFilterOptions((pre) => ({ ...pre, [name]: value }));
   };
 
-  const selectOptions = ["all", "todo", "pending", "completed"];
+  const selectOptions = ["all", "todo", "ongoing", "completed"];
 
   return (
     <div className="navbar-container">
