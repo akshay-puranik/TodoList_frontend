@@ -16,12 +16,12 @@ export const Navbar = ({ handleFilters, setFormOpen }) => {
 
   return (
     <div className="navbar-container">
-      <select name="selectOrder" onChange={(e) => handleInputs(e.target)}>
+      {/* <select name="selectOrder" onChange={(e) => handleInputs(e.target)}>
         <option defaultValue="asc" value={"asc"}>
           Ascending
         </option>
         <option value={"desc"}>Decending</option>
-      </select>
+      </select> */}
       <select
         defaultValue="all"
         name="selectStatus"
