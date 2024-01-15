@@ -1,16 +1,10 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
 .navbar-container{
   display: flex;
   padding: 20px;
   justify-content: space-between;
   align-items: center;
 }
+
 
 .search{
   padding: 10px 20px; 
@@ -27,8 +21,14 @@ option{
 }
 
 .task-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
   border: 1px solid white;
-  width: 300px;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .form-container{
@@ -36,11 +36,16 @@ option{
   display: flex;
   justify-content: center;
 }
+
 form{
   display: flex;
   flex-direction: column;
   gap: 20px;
   min-width: 400px;
+}
+
+.status-title{
+  text-transform: capitalize;
 }
 
 form input{
@@ -49,8 +54,24 @@ form input{
 }
 
 .todo-list-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   gap: 30px;
   margin-top: 20px;
+  min-width: 1000px;
+  width: inherit;
+}
+
+.todo-list-container>.container{
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  max-width: fit-content;
+}
+
+.status-tag{
+  border-radius: 5px;
+  width: 100px;
+  padding: 5px 10px;
 }
