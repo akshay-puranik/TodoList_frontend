@@ -3,10 +3,12 @@ import "./App.css";
 import { TodoList } from "./components/TodoList";
 import { Navbar } from "./components/Navbar";
 import { useSelector } from "react-redux";
+import { NewTaskForm } from "./components/NewTaskForm";
 
 function App() {
-  const toDos = useSelector(store => store.todos)
+  const toDos = useSelector((store) => store.todos);
   const [displayTodos, setDisplayTodos] = useState([...toDos]);
+  const [isFormOpen, setFormOpen] = useState(false);
 
   const handleFilters = ({ selectOrder, selectStatus, searchName }) => {
     let newList = [...toDos];
@@ -18,19 +20,23 @@ function App() {
     if (selectStatus && selectStatus !== "all") {
       newList = newList.filter((task) => task.status === selectStatus);
     }
-    // if (selectOrder && selectOrder === "asc") {
-    //   newList.sort((a, b) => a.title - b.title);
-    // }
-    // else{
-    //   newList.sort((a, b) => b.title - a.title);
-    // }
+    if (selectOrder && selectOrder === "asc") {
+      newList.sort((a, b) =>
+        a.title.toLowerCase().localeCompare(b.title.toLowerCase())
+      );
+    } else {
+      newList.sort((a, b) =>
+        b.title.toLowerCase().localeCompare(a.title.toLowerCase())
+      );
+    }
 
-    setDisplayTodos(pre => [...newList]);
+    setDisplayTodos((pre) => [...newList]);
   };
 
   return (
     <>
-      <Navbar handleFilters={handleFilters} />
+      <Navbar setFormOpen={setFormOpen} handleFilters={handleFilters} />
+      {isFormOpen && <NewTaskForm setFormOpen={setFormOpen} />}
       <TodoList tasks={displayTodos} />
     </>
   );

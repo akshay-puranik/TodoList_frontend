@@ -4,7 +4,7 @@ export const initState = {
       title: "Complete Project Proposal",
       description: "Write and submit the project proposal for approval",
       dueDate: "2024-02-01",
-      status: "pending",
+      status: "todo",
     },
     {
       title: "Prepare for Meeting",
@@ -25,7 +25,7 @@ export const initState = {
       description:
         "Compile and send out the monthly progress report to stakeholders",
       dueDate: "2024-01-31",
-      status: "pending",
+      status: "completed",
     },
     {
       title: "Complete Training Modules",

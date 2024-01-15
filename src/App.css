@@ -31,8 +31,26 @@ option{
   width: 300px;
 }
 
+.form-container{
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+form{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 400px;
+}
+
+form input{
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
 .todo-list-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
+  margin-top: 20px;
 }
