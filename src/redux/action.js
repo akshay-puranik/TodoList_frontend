@@ -1,9 +1,13 @@
 import * as types from "./actionTypes";
 
-export const createTask = (taskDetails) => async (dispatch) => {
+export const createTask = (taskDetails) => (dispatch) => {
   dispatch({ type: types.CREATE_TASK, payload: taskDetails });
 };
 
-export const updateTask = (taskDetails) => async (dispatch) => {
-  dispatch({ type: types.UPDATE_TASK, payload: taskDetails });
+export const deleteTask = (taskDetails) => (dispatch) => {
+  dispatch({ type: types.DELETE_TASK, payload: taskDetails });
+};
+
+export const promoteTask = (taskDetails) => (dispatch) => {
+  dispatch({ type: types.PROMOTE_TASK, payload: taskDetails });
 };

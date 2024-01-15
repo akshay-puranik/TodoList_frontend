@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import { TodoList } from "./components/TodoList";
 import { Navbar } from "./components/Navbar";
@@ -7,37 +7,41 @@ import { NewTaskForm } from "./components/NewTaskForm";
 
 function App() {
   const toDos = useSelector((store) => store.todos);
-  const [displayTodos, setDisplayTodos] = useState([...toDos]);
+  const [displayTodos, setDisplayTodos] = useState({ ...toDos });
+  useEffect(() => {
+    setDisplayTodos({ ...toDos });
+  }, [toDos]);
+
   const [isFormOpen, setFormOpen] = useState(false);
+  const toggleForm = () => {
+    setFormOpen((pre) => !pre);
+  };
 
-  const handleFilters = ({ selectOrder, selectStatus, searchName }) => {
-    let newList = [...toDos];
-    if (searchName) {
-      newList = newList.filter((task) =>
-        task.title.toLowerCase().includes(searchName)
-      );
-    }
+  const handleFilters = ({ selectStatus, searchName }) => {
+    let newList = { ...toDos };
     if (selectStatus && selectStatus !== "all") {
-      newList = newList.filter((task) => task.status === selectStatus);
+      newList = {};
+      newList[selectStatus] = toDos[selectStatus];
     }
-    if (selectOrder && selectOrder === "asc") {
-      newList.sort((a, b) =>
-        a.title.toLowerCase().localeCompare(b.title.toLowerCase())
-      );
-    } else {
-      newList.sort((a, b) =>
-        b.title.toLowerCase().localeCompare(a.title.toLowerCase())
-      );
+    if (searchName) {
+      for (let i in toDos) {
+        newList[i] = toDos[i].filter((task) =>
+          task.title.toLowerCase().includes(searchName)
+        );
+      }
     }
-
-    setDisplayTodos((pre) => [...newList]);
+    setDisplayTodos((pre) => newList);
   };
 
   return (
     <>
-      <Navbar setFormOpen={setFormOpen} handleFilters={handleFilters} />
-      {isFormOpen && <NewTaskForm setFormOpen={setFormOpen} />}
-      <TodoList tasks={displayTodos} />
+      <Navbar toggleForm={toggleForm} handleFilters={handleFilters} />
+      {isFormOpen && (
+        <NewTaskForm toggleForm={toggleForm} setFormOpen={setFormOpen} />
+      )}
+      <div className="bodyContainer">
+        <TodoList tasks={displayTodos} />
+      </div>
     </>
   );
 }

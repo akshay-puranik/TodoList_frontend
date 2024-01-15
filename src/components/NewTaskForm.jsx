@@ -1,7 +1,11 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { createTask } from "../redux/action";
 
-export const NewTaskForm = ({ setFormOpen }) => {
-  const [formData, setFormData] = useState({});
+export const NewTaskForm = ({ setFormOpen, toggleForm }) => {
+  const dispatch = useDispatch();
+
+  const [formData, setFormData] = useState({ status: "todo" });
 
   const handleFormData = (e) => {
     const { name, value } = e;
@@ -10,13 +14,17 @@ export const NewTaskForm = ({ setFormOpen }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-
+    dispatch(createTask(formData));
     setFormOpen((pre) => !pre);
   };
 
   return (
-    <div className="form-container">
+    <div className="form-container fadein">
       <form onSubmit={(e) => handleFormSubmit(e)} action="">
+        <span className="closeButton" onClick={toggleForm}>
+          &#10005;
+        </span>
+        <h2>Add a new task</h2>
         <input
           onChange={(e) => handleFormData(e.target)}
           type="text"
@@ -28,16 +36,16 @@ export const NewTaskForm = ({ setFormOpen }) => {
         <input
           onChange={(e) => handleFormData(e.target)}
           type="text"
-          name="desc"
-          id="desc"
+          name="description"
+          id="description"
           placeholder="Enter Short Description"
         />
         <input
           onChange={(e) => handleFormData(e.target)}
-          type="text"
+          type="date"
           required={true}
-          name="date"
-          id="date"
+          name="dueDate"
+          id="dueDate"
           placeholder="Enter Due Date"
         />
         <input type="submit" value="Submit" />
