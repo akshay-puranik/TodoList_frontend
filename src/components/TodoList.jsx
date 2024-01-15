@@ -3,7 +3,7 @@ import { Todo } from "./Todo";
 export const TodoList = ({ tasks }) => {
   const status = Object.keys(tasks);
   let items = Object.values(tasks);
-  
+
   return (
     <div className="todo-list-container">
       {status.map((stat, i) => (
