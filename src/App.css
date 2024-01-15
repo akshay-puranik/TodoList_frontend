@@ -5,6 +5,27 @@
   text-align: center;
 }
 
+.navbar-container{
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search{
+  padding: 10px 20px; 
+  border-radius: 20px;
+}
+
+select{
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
+option{
+  text-transform: capitalize;
+}
+
 .task-card {
   border: 1px solid white;
   width: 300px;
