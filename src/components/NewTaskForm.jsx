@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createTask } from "../redux/action";
 
-export const NewTaskForm = ({ setFormOpen }) => {
+export const NewTaskForm = ({ setFormOpen, toggleForm }) => {
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({ status: "todo" });
@@ -19,8 +19,12 @@ export const NewTaskForm = ({ setFormOpen }) => {
   };
 
   return (
-    <div className="form-container">
+    <div className="form-container fadein">
       <form onSubmit={(e) => handleFormSubmit(e)} action="">
+        <span className="closeButton" onClick={toggleForm}>
+          &#10005;
+        </span>
+        <h2>Add a new task</h2>
         <input
           onChange={(e) => handleFormData(e.target)}
           type="text"

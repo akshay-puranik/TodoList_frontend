@@ -7,7 +7,7 @@ export const TodoList = ({ tasks }) => {
   return (
     <div className="todo-list-container">
       {status.map((stat, i) => (
-        <>
+        <div key={i} className="task-container">
           <div className="container">
             <h2 className="status-title">{stat}</h2>
           </div>
@@ -16,7 +16,7 @@ export const TodoList = ({ tasks }) => {
               <Todo {...task} />
             ))}
           </div>
-        </>
+        </div>
       ))}
     </div>
   );

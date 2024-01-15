@@ -6,7 +6,7 @@ export const Todo = ({ title, description, dueDate, status }) => {
       <div className="task-card">
         <h3>{title}</h3>
         <p>{description}</p>
-        <p>dueDate: {dueDate}</p>
+        <p>{dueDate}</p>
         <p
           className="status-tag"
           style={{ backgroundColor: getTabColour(status) }}

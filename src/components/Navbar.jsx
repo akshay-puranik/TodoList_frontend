@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const Navbar = ({ handleFilters, setFormOpen }) => {
+export const Navbar = ({ handleFilters, toggleForm }) => {
   const [filterOptions, setFilterOptions] = useState({});
 
   useEffect(() => {
@@ -35,7 +35,10 @@ export const Navbar = ({ handleFilters, setFormOpen }) => {
         onChange={(e) => handleInputs(e.target)}
         placeholder="Search Task"
       />
-      <button onClick={() => setFormOpen((pre) => !pre)}>Add New Task</button>
+      <button className="addTaskButton" onClick={() => toggleForm()}>
+        {" "}
+        + Add Task
+      </button>
     </div>
   );
 };

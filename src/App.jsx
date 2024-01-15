@@ -9,33 +9,39 @@ function App() {
   const toDos = useSelector((store) => store.todos);
   const [displayTodos, setDisplayTodos] = useState({ ...toDos });
   useEffect(() => {
-    setDisplayTodos({...toDos})
-  },[toDos])
-  
+    setDisplayTodos({ ...toDos });
+  }, [toDos]);
+
   const [isFormOpen, setFormOpen] = useState(false);
+  const toggleForm = () => {
+    setFormOpen((pre) => !pre);
+  };
 
   const handleFilters = ({ selectStatus, searchName }) => {
-    // let newList = {};
-
-    // if (selectStatus && selectStatus !== "all") {
-    //   newList[selectStatus] = toDos[selectStatus];
-    // }
-    // if (searchName) {
-    //   for (let i in toDos) {
-    //     newList[i] = toDos[i].filter((task) =>
-    //       task.title.toLowerCase().includes(searchName)
-    //     );
-    //   }
-    // }
-
-    // setDisplayTodos((pre) => newList);
+    let newList = {...toDos};
+    if (selectStatus && selectStatus !== "all") {
+      newList = {};
+      newList[selectStatus] = toDos[selectStatus];
+    }
+    if (searchName) {
+      for (let i in toDos) {
+        newList[i] = toDos[i].filter((task) =>
+          task.title.toLowerCase().includes(searchName)
+        );
+      }
+    }
+    setDisplayTodos((pre) => newList);
   };
 
   return (
     <>
-      <Navbar setFormOpen={setFormOpen} handleFilters={handleFilters} />
-      {isFormOpen && <NewTaskForm setFormOpen={setFormOpen} />}
-      <TodoList tasks={displayTodos} />
+      <Navbar toggleForm={toggleForm} handleFilters={handleFilters} />
+      {isFormOpen && (
+        <NewTaskForm toggleForm={toggleForm} setFormOpen={setFormOpen} />
+      )}
+      <div className="bodyContainer">
+        <TodoList tasks={displayTodos} />
+      </div>
     </>
   );
 }
