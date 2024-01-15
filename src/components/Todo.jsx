@@ -1,11 +1,18 @@
+import { getTabColour } from "../utils/utils";
+
 export const Todo = ({ title, description, dueDate, status }) => {
   return (
     <>
       <div className="task-card">
         <h3>{title}</h3>
-        <p><strong>Desc:</strong> {description}</p>
+        <p>{description}</p>
         <p>dueDate: {dueDate}</p>
-        <p>status: {status}</p>
+        <p
+          className="status-tag"
+          style={{ backgroundColor: getTabColour(status) }}
+        >
+          {status}
+        </p>
       </div>
     </>
   );
