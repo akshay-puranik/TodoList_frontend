@@ -177,6 +177,38 @@ body {
   font-size: 20px;
 }
 
+.bottom-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.top-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete-todo {
+  border: transparent;
+  background-color: transparent;
+  color: red;
+  font-weight: 600;
+}
+
+.delete-todo:hover {
+  cursor: pointer;
+}
+
+.update-todo {
+  border: transparent;
+  background-color: transparent;
+  color: green;
+  font-weight: 600;
+}
+
+.update-todo:hover {
+  cursor: pointer;
+}
+
 .fadein {
   animation: opac 0.2s;
 }
