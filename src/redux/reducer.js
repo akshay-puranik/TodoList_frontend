@@ -1,8 +1,14 @@
 import * as ACTION_TYPES from "./actionTypes";
 
-const todos = JSON.parse(localStorage.getItem("state"));
+const todos = JSON.parse(localStorage.getItem("state")) || {
+  todos: {
+    todo: [],
+    ongoing: [],
+    completed: [],
+  },
+};
 
-export const initState = todos
+export const initState = todos;
 
 export const reducer = (state = initState, { type, payload }) => {
   switch (type) {
@@ -41,6 +47,7 @@ export const reducer = (state = initState, { type, payload }) => {
           ? "completed"
           : null;
       if (nextStatus) {
+        console.log(nextStatus)
         let newState = {
           ...state,
           todos: {
