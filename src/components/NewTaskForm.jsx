@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createTask } from "../redux/action";
+import { v4 as uuidv4 } from "uuid";
 
 export const NewTaskForm = ({ setFormOpen, toggleForm }) => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ export const NewTaskForm = ({ setFormOpen, toggleForm }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    dispatch(createTask(formData));
+    dispatch(createTask({ ...formData, id: uuidv4() }));
     setFormOpen((pre) => !pre);
   };
 

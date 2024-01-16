@@ -1,9 +1,9 @@
 export const getTabColour = (status) => {
   switch (status) {
     case "ongoing":
-      return "#ADD8E6";
+      return "#ffad84";
     case "todo":
-      return "#FFD3D3";
+      return "#9dbbf2";
     case "completed":
       return "#98FB98";
     default:

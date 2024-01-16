@@ -8,12 +8,13 @@ export const TodoList = ({ tasks }) => {
     <div className="todo-list-container">
       {status.map((stat, i) => (
         <div key={i} className="task-container">
-          <div className="container">
+          <div className="status-title-container">
             <h2 className="status-title">{stat}</h2>
+            <h3 className="status-count">({items[i].length})</h3>
           </div>
           <div className="container">
             {items[i]?.map((task) => (
-              <Todo {...task} status={stat} />
+              <Todo {...task} status={stat} count={stat.length} />
             ))}
           </div>
         </div>

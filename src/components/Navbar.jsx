@@ -5,7 +5,7 @@ export const Navbar = ({ handleFilters, toggleForm }) => {
 
   useEffect(() => {
     handleFilters(filterOptions);
-  }, [filterOptions]);
+  }, [JSON.stringify(filterOptions)]);
 
   const handleInputs = (e) => {
     const { name, value } = e;
