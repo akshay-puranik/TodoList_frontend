@@ -10,7 +10,7 @@ function App() {
   const [displayTodos, setDisplayTodos] = useState({ ...toDos });
   useEffect(() => {
     setDisplayTodos({ ...toDos });
-  }, [toDos]);
+  }, [JSON.stringify(toDos)]);
 
   const [isFormOpen, setFormOpen] = useState(false);
   const toggleForm = () => {

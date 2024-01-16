@@ -179,7 +179,7 @@ body {
 
 .bottom-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 .top-container {
@@ -211,6 +211,25 @@ body {
 
 .fadein {
   animation: opac 0.2s;
+}
+
+.status-title-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-title-container{
+
+  display: flex;
+  text-transform: capitalize;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-title-container p{
+  margin-left: 20px;
+  font-weight: 400;
 }
 
 @keyframes opac {

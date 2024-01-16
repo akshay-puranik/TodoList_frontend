@@ -15,7 +15,15 @@ export const Todo = ({ title, description, dueDate, status, id }) => {
     <>
       <div className="task-card">
         <div className="top-container">
-          <h3>{title}</h3>
+          <div className="task-title-container">
+            <h3>{title}</h3>
+            <p
+              className="status-tag"
+              style={{ backgroundColor: getTabColour(status) }}
+            >
+              {status}
+            </p>
+          </div>
           <button onClick={(e) => handleDelete()} className="delete-todo">
             {" "}
             X{" "}
@@ -24,14 +32,11 @@ export const Todo = ({ title, description, dueDate, status, id }) => {
         <p>{description}</p>
         <p>{dueDate}</p>
         <div className="bottom-container">
-          <p
-            className="status-tag"
-            style={{ backgroundColor: getTabColour(status) }}
-          >
-            {status}
-          </p>
           {status !== "completed" ? (
-            <button className="update-todo" onClick={e => handlePromote()}> => </button>
+            <button className="update-todo" onClick={(e) => handlePromote()}>
+              {" "}
+              &#10145;{" "}
+            </button>
           ) : null}
         </div>
       </div>
